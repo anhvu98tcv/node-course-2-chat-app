@@ -14,11 +14,18 @@ io.on('connection', (socket) =>{
 
   socket.emit('newMessage',{
     from: 'Vu',
-    text: 'VuDz'
+    text: 'VuDz',
+    createAt: 123123
   });
 
   socket.on('createMessage' , (message) =>{
     console.log('Create message ',message);
+    io.emit('newMessage',{
+      from: message.from,
+      text: message.text,
+      createAt: new Date().getTime()
+    });
+
   });
 
   socket.on('disconnect', () =>{
