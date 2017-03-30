@@ -5,6 +5,7 @@ const socketIO = require('socket.io');
 
 const publicPath = path.join(__dirname,'../public');
 const {generateMessage, generateLocationMessage} = require('./utils/message');
+const {isRealString} = require('./utils/validation');
 var app = express();
 var port = process.env.PORT||3000;
 var server = http.createServer(app);
@@ -16,6 +17,14 @@ io.on('connection', (socket) =>{
   socket.emit('newMessage',generateMessage('Admin', 'Welcome to the chat app'));
 
   socket.broadcast.emit('newMessage',generateMessage('Admin', 'New user joined'));
+
+  socket.on('join', (params, callback) =>{
+    if (!isRealString(params.name) || !isRealString(params.room)){
+      callback('Name and room name is required');
+    }
+
+    callback();
+  });
 
   socket.on('createMessage' , (message, callback) =>{
     console.log('Create message ',message);
