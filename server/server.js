@@ -63,6 +63,7 @@ io.on('connection', (socket) =>{
       io.to(user.room).emit('newMessage', generateMessage('Admin' , `${user.name} has been left`));
       if (rooms.getNumberPeopleInRoom(user.room) === 1){
         rooms.deleteRoom(user.room);
+        io.emit('updateRoomList', rooms.getRoomList());
       } else {
         rooms.truSoNguoiTrongRoom(user.room);
       }
