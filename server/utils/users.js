@@ -22,9 +22,7 @@ class Users{
     }
 
     getUserList(room){
-      var users = this.users.filter((user) =>{
-        return user.room === room;
-      });
+      var users = this.users.filter((user) => user.room ===  room);
       var namesArray = users.map((user) =>{
         return user.name;
       });
@@ -32,6 +30,8 @@ class Users{
       return namesArray;
     }
 }
+
+
 
 module.exports = {Users};
 

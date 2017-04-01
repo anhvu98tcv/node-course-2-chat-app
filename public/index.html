@@ -19,12 +19,26 @@
         </div>
         <div class="form-field">
           <label>Room name</label>
-          <input type="text" name="room"/>
+          <input type="text" name="room" id="room"/>
+        </div>
+        <div class="form-field">
+          <label>Room name</label>
+          <select id="rooms">
+            <option selected="default"></option>
+          </select>
         </div>
         <div class="form-field">
           <button>Join</button>
         </div>
       </form>
+
+
+      <script src="/socket.io/socket.io.js"></script>
+      <script src="/js/libs/lodash.min.js"></script>
+      <script src="/js/libs/jquery.min.js"></script>
+      <script src="/js/libs/mustache.js"></script>
+      <script src="/js/libs/deparam.js"></script>
+      <script src="/js/index.js"></script>
     </div>
   </body>
 </html>
