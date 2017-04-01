@@ -14,9 +14,9 @@ socket.on('updateRoomList', function(rooms) {
   $('#rooms').find('option').remove();
   var filterRooms = _.uniq(rooms);
 
-  var ol = jQuery('<select></select>');
+  $('#rooms').append(`<option value=""></option>`);
   filterRooms.forEach( function (room) {
-    $('#rooms').append(`<option value="${room}">${room}</option>`)
+    $('#rooms').append(`<option value="${room}">${room}</option>`);
   });
 
 
